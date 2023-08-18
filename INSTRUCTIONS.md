@@ -52,6 +52,10 @@ improvements, or performance concerns which may apply.
 
 Please refer the bottom of this document for some extra credit.
 
+## Submission
+
+Please refer to the `README.md` for submission instructions.
+
 # Helpful Reference
 
 ## Introduction to HTTP

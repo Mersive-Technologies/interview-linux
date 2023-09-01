@@ -120,37 +120,37 @@ the headers and the body, if present.
 
 ```{bash}
 # By default, the server should return "404 Not Found" for all URIs
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i http://localhost:8000/foo
 HTTP/1.1 404 Not Found
 ...
 
 # The server should accept data of any type (e.g. JSON, PNG, text, etc.)
-$ curl -i -H "Content-Type: application/json" -X POST -d '{ "secret": 42 }' https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i -H "Content-Type: application/json" -X POST -d '{ "secret": 42 }' http://localhost:8000/foo
 HTTP/1.1 200 OK
 ...
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i http://localhost:8000/foo
 HTTP/1.1 200 OK
 Content-Type: application/json
 ...
 { "secret": 42 }
 
-$ curl -i -H "Content-Type: text/plain" -X POST -d 'squeamish ossifrage' https://urldefense.com/v3/__http://localhost:8000/yo/yo/yo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSsc0mj7FKA$ 
+$ curl -i -H "Content-Type: text/plain" -X POST -d 'squeamish ossifrage' http://localhost:8000/yo/yo/yo
 HTTP/1.1 200 OK
 ...
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/yo/yo/yo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSsc0mj7FKA$ 
+$ curl -i http://localhost:8000/yo/yo/yo
 HTTP/1.1 200 OK
 Content-Type: text/plain
 ...
 squeamish ossifrage
 
 # Deleting a URI removes the mapping
-$ curl -i -X DELETE https://urldefense.com/v3/__http://localhost:8000/yo/yo/yo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSsc0mj7FKA$ 
+$ curl -i -X DELETE http://localhost:8000/yo/yo/yo
 HTTP/1.1 200 OK
 ...
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/yo/yo/yo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSsc0mj7FKA$ 
+$ curl -i http://localhost:8000/yo/yo/yo
 HTTP/1.1 404 Not Found
 ...
 ```
@@ -170,46 +170,46 @@ specified, the latest version is queried.
 For example:
 
 ```{bash}
-$ curl -i -X POST -d 'hello' https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i -X POST -d 'hello' http://localhost:8000/foo
 HTTP/1.1 200 OK
 X-Data-Version: 1
 ...
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i http://localhost:8000/foo
 HTTP/1.1 200 OK
 ...
 hello
 
-$ curl -i -X POST -d 'hola' https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i -X POST -d 'hola' http://localhost:8000/foo
 HTTP/1.1 200 OK
 X-Data-Version: 2
 ...
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i http://localhost:8000/foo
 HTTP/1.1 200 OK
 ...
 hola
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/foo?version=1__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseaajf7uA$ 
+$ curl -i http://localhost:8000/foo?version=1
 HTTP/1.1 200 OK
 ...
 hello
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/foo?version=2__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSsca-vyvVg$ 
+$ curl -i http://localhost:8000/foo?version=2
 HTTP/1.1 200 OK
 ...
 hola
 
-$ curl -i -X DELETE https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i -X DELETE http://localhost:8000/foo
 HTTP/1.1 200 OK
 X-Data-Version: 3
 ...
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/foo__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSseQ_i5hDQ$ 
+$ curl -i http://localhost:8000/foo
 HTTP/1.1 404 Not Found
 ...
 
-$ curl -i https://urldefense.com/v3/__http://localhost:8000/foo?version=2__;!!LmSkwj2YAGg!SCdei0-yNYfHUrLDSjjQunaKgeFMmaKqRwd18hlyFukuriHeOSfLNXtzMdwOb7-TUamRHb5YSsca-vyvVg$ 
+$ curl -i http://localhost:8000/foo?version=2
 HTTP/1.1 200 OK
 ...
 hola

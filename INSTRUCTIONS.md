@@ -9,7 +9,7 @@ In a couple of hours, we expect everyone will get some of the way through this p
 
 At this stage, we care most about:
 * Interpreting written specifications (following instructions)
-* General familiarity with sockets, the C language, multi-threading, network I/O
+* General familiarity with sockets, the C/C++ language, multi-threading, network I/O
 * Legible code
 
 When in doubt, do less, better. 😀
